@@ -1,0 +1,28 @@
+import React, { useRef, useState } from 'react';
+
+const Counter = () => {
+  const [num,setNum]=useState(0);
+
+  const inc=()=>{
+    return setNum(num+1)
+  }
+
+  const dec=()=>{
+    if(num==0){
+      return setNum(num)
+    }
+    return setNum(num-1)
+  }
+
+
+
+  return (
+    <div className='content'>
+        <button onClick={inc} className='btn'>+</button>
+        <p>{num}</p>
+      <button onClick={dec} className='btn'>-</button>
+    </div>
+  );
+};
+
+export default Counter;
