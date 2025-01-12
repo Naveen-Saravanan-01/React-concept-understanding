@@ -1,0 +1,90 @@
+import React, { useState } from 'react'
+
+
+
+
+
+const Content = () => {
+
+  const [form,setForm]=useState({name:'',email:''})
+
+const [error,setError]=useState({});
+
+const handleChange=(e)=>{
+  setForm({...form,[e.target.name]:e.target.value})
+}
+
+const validate=()=>{
+  let errors={}
+
+  if(!form.name){
+    errors.name="Name is required"
+  }
+
+  if(!form.email){
+    errors.email="Email is required"
+  }
+
+  setError(errors)
+
+  return Object.keys(errors).length===0
+
+}
+
+const handleSubmit=(e)=>{
+
+  e.preventDefault();
+
+  if(validate()){
+
+    alert("Form submitted")
+
+  }
+
+}
+
+
+  return (
+    <form onSubmit={handleSubmit}>
+
+    <div>
+      <input type="text"
+      name='name'
+      placeholder='Name'
+      onChange={handleChange}
+      value={form.name}
+      />
+
+</div>
+
+      {error.name && <p>{error.name}</p>}
+
+    <div>
+
+      <input type="email"
+      name='email'
+      placeholder='Email'
+      onChange={handleChange}
+
+      value={form.email}
+
+      
+      
+      />
+
+    </div>
+
+{error.email && <p>{error.email}</p>}
+
+
+      <button type='submit'>Submit</button>
+
+
+
+    </form>
+  )
+}
+
+export default Content
+
+
